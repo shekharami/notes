@@ -8,7 +8,7 @@ export const postOrGet = async (data, type) => {
     let url;
 
     try{
-        type === 'posting'? url = 'http://127.0.0.1:3000/api/notes/save' : url = 'http://127.0.0.1:3000/api/notes/get';
+        type === 'posting'? url = '/api/notes/save' : url = '/api/notes/get';
 
         const res = await axios({  
             method: 'POST',
@@ -40,7 +40,7 @@ export const deleteNote = async (id) => {
     try{
         const res = await axios({  
             method: 'DELETE',
-            url: `http://127.0.0.1:3000/api/notes/delete/${id}`,
+            url: `/api/notes/delete/${id}`,
             headers: {
                 "Content-type": "application/json; charset=UTF-8"
             },
