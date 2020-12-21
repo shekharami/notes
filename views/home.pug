@@ -1,0 +1,37 @@
+doctype html
+html(lang="en" dir="ltr")
+    head
+        meta(charset="utf-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet" href="css/style.css")
+        link(rel="shortcut icon" type="image/png" href="/img/favicon.ico")
+        title
+            | #{title}
+    body.main
+        .main_div
+            h2.header Create your note
+            form.form_note
+                table
+                    tr
+                        td Name
+                        td
+                            input#name(type="text" name="" placeholder="Enter your Name" required)
+                    tr
+                        td Email
+                        td
+                            input#email(type="email" name="" placeholder="Enter your Email" required)
+                    tr
+                        td Item
+                        td
+                            textarea.text#todoitem(name="name" rows="8" cols="80" placeholder="Enter you items and click submit to save them")
+                            br
+                            input.submit_text.button(type="submit" name="" value="submit")
+                br
+            hr
+            h3 OR
+            table
+                tr
+                    td
+                        a(href="/myNotes")
+                            input.get_items.button(type="button" name="" value="view your submitted items")
+    script(src='/js/bundle.js')

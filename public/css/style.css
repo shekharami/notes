@@ -1,0 +1,71 @@
+.main {
+  background-image: url("/img/wp.jpg");
+}
+
+.main_div {
+  height: 600px;
+  width: 700px;
+  background-color: white;
+  margin-left: 400px;
+  padding: 1px 30px;
+  box-shadow: 3px 3px 5px 5px #888888;
+}
+
+.main_div_view {
+  height: 125px;
+  width: 700px;
+  background-color: white;
+  margin-left: 400px;
+  padding: 1px 30px;
+  box-shadow: 3px 3px 5px 5px #888888;
+}
+
+.hr_class {
+  border-top: 0.5px dotted #8c8b8b;
+}
+
+hr {
+  border-bottom: 1px dotted #88ff00;
+}
+
+.heading {
+  background-color: #88ff00;
+  width: 10%;
+}
+
+.timestamp {
+  background-color: white;
+}
+
+.text_link {
+  color: green;
+}
+
+.button {
+  background-color: #4caf50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.button_note {
+  background-color: #4caf50;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.header {
+  padding: 60px;
+  text-align: center;
+  background: /*#1abc9c*/ #4caf50;
+  color: white;
+  font-size: 30px;
+}

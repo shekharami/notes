@@ -1,0 +1,28 @@
+doctype html
+html(lang="en" dir="ltr")
+    head
+        meta(charset="utf-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet" href="css/style.css")
+        link(rel="shortcut icon" type="image/png" href="/img/favicon.ico")
+        title
+            | #{title}
+    body.main
+        .main_div_view
+            form.form_get
+                table
+                    tr
+                        td
+                            p
+                                input#get_email(type="email" name="" value="" placeholder="Enter your email")
+                                |  and click on the below button to get your items
+                    tr
+                        td
+                            input.get_items.button(type="submit" name="" value="Get saved Notes")
+                        td
+                            a.button(href="/") Create a Note
+
+            .returned_results
+                h2#greeting
+                p.contents
+    script(src='/js/bundle.js')
