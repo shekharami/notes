@@ -35,8 +35,6 @@ export const postOrGet = async (data, type) => {
 };
 
 export const deleteNote = async (id) => {
-    let url;
-
     try{
         const res = await axios({  
             method: 'DELETE',

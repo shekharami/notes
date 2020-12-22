@@ -1,6 +1,6 @@
-const Notes = require("../models/notesModel");
+const Notes = require("../models/noteModel");
 
-exports.getNotes = async (req, res, next) =>{
+exports.getNote = async (req, res, next) =>{
 
     try{
         const data = await Notes.find({email: req.body.email});
@@ -20,7 +20,7 @@ exports.getNotes = async (req, res, next) =>{
     next();
 };
 
-exports.postNotes = async (req, res, next) =>{
+exports.postNote = async (req, res, next) =>{
     try{
         
         const item = {... req.body};

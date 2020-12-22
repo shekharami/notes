@@ -10,7 +10,7 @@ dotenv.config({path: './config.env'})
 //     res.send('hello frrom server');
 // })
 
-const DB = '//amitshekhar:<DATABASE_PASSWORD>@cluster0.fxx85.mongodb.net/Notes?retryWrites=true&w=majority'.replace('<DATABASE_PASSWORD>', process.env.DATABASE_PASSWORD);
+const DB = 'mongodb+srv://amitshekhar:<DATABASE_PASSWORD>@cluster0.fxx85.mongodb.net/Notes?retryWrites=true&w=majority'.replace('<DATABASE_PASSWORD>', process.env.DATABASE_PASSWORD);
 
 mongoose.connect(DB, {
     useNewUrlParser: true,
@@ -21,7 +21,7 @@ mongoose.connect(DB, {
     //console.log(con.connections);
     console.log("db connection successful");
 });
-
-const server = app.listen(process.env.PORT, () =>{
-    console.log('Server listening at port 3000');
-})
+const port = process.env.PORT || 3000 ;
+const server = app.listen(port, () =>{
+    console.log(`Server listening at port ${port}`);
+});

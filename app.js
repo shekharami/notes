@@ -7,7 +7,7 @@ const hpp = require('hpp');
 const compression = require('compression');
 const cors = require('cors');
 
-const notesRouter = require('./routes/notesRouter');
+const noteRouter = require('./routes/noteRouter');
 const viewRouter = require('./routes/viewRouter');
 
 const app = express();
@@ -39,7 +39,7 @@ app.set('views', path.join(__dirname, 'views'));
 
 app.use(express.json({ limit : '10kb'  }));
 
-app.use('/api/notes', notesRouter);
+app.use('/api/notes', noteRouter);
 app.use('/', viewRouter);
 
 module.exports = app;

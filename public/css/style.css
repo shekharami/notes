@@ -6,7 +6,8 @@
   height: 600px;
   width: 700px;
   background-color: white;
-  margin-left: 400px;
+  margin-left: auto;
+  margin-right: auto;
   padding: 1px 30px;
   box-shadow: 3px 3px 5px 5px #888888;
 }
@@ -15,7 +16,8 @@
   height: 125px;
   width: 700px;
   background-color: white;
-  margin-left: 400px;
+  margin-left: auto;
+  margin-right: auto;
   padding: 1px 30px;
   box-shadow: 3px 3px 5px 5px #888888;
 }
