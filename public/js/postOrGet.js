@@ -1,7 +1,5 @@
 import axios from "axios";
 
-
-
 export const postOrGet = async (data, type) => {
 
     //console.log(data)
@@ -34,6 +32,30 @@ export const postOrGet = async (data, type) => {
     }
 };
 
+export const updateNoteAxios = async (data) => {
+
+    const url = '/api/notes/update';
+
+    try{
+        
+        const res = await axios({  
+            method: 'PATCH',
+            url,
+            data,
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            },
+        });
+        //console.log(res)
+        if(res.data.status === 'success' ){
+            return true
+        }
+        
+    }catch(err){
+        alert(err);
+    }
+};
+
 export const deleteNote = async (id) => {
     try{
         const res = await axios({  
@@ -51,3 +73,5 @@ export const deleteNote = async (id) => {
         alert(err);
     }
 };
+
+

@@ -1,5 +1,7 @@
 import '@babel/polyfill';
-import { postOrGet, deleteNote } from './postOrGet';
+import { updateNote } from '../../controllers/noteController';
+import { update } from '../../models/noteModel';
+import { postOrGet, deleteNote, updateNoteAxios  } from './postOrGet';
 
 const submit = document.querySelector('.submit_text');
 const form = document.querySelector('.form_note');
@@ -49,22 +51,19 @@ if(form_get){
                 greeting.innerHTML = greet ;
                 
                 let counter = n.length;
-                let slno = 1;
-                
-                let item = `<div id="div_${slno}" class="timestamp">
-                            [${new Date(n.data[0].createdAt).toLocaleString(undefined, {timeZone: 'Asia/Kolkata'})}]:👉 
-                            <span>${n.data[0].item}</span><br>
-                            <input id="update_${slno}" class="button_note" type="button" value = "update"> | 
-                            <input id="delete_${slno}" class="button_note" type="button" value = "delete"><hr></div>`;
-                
-                for(let i = 1; i < n.length; i++){
-
+                let slno = 0;
+             
+                let item = '';
+                for(let i = 0 ; i < n.length; i++){
                     slno += 1;
                     item = item + `<div id="div_${slno}" class="timestamp">
-                                    [${new Date(n.data[i].createdAt).toLocaleString(undefined, {timeZone: 'Asia/Kolkata'})}]:👉 
-                                    <span>${n.data[i].item}</span><br>
+                                    <span id="timestamp_${slno}">SAVED AT: [${new Date(n.data[i].createdAt).toLocaleString(undefined, {timeZone: 'Asia/Kolkata'})}]:👉</span>
+                                    <textarea  id="textarea_${slno}" rows="8" cols="80">${n.data[i].item}</textarea><br>
                                     <input id="update_${slno}" class="button_note" type="button" value = "update"> | 
-                                    <input id="delete_${slno}" class="button_note" type="button" value = "delete"><hr></div>`;
+                                    <input id="delete_${slno}" class="button_note" type="button" value = "delete"><hr></div>`
+                                    // <span id = "span_${slno}">${n.data[i].item}</span><br>
+                                    // <input id="update_${slno}" class="button_note" type="button" value = "update"> | 
+                                    // <input id="delete_${slno}" class="button_note" type="button" value = "delete"><hr></div>`;
                 }
                 
                 contents.innerHTML = item;
@@ -82,10 +81,14 @@ if(form_get){
                         }
                     });
 
-                    document.getElementById(`update_${i+1}`).addEventListener("click", function(){
-                        alert('Updation is not available yet, It will be implemented soon!')
-                    });
+                    document.getElementById(`update_${i+1}`).addEventListener("click", async function(){
+                        const item = document.getElementById(`textarea_${i+1}`).value;
+                        await updateNoteAxios({ id: n.data[i].id, item  })
+                        document.getElementById(`timestamp_${i+1}`).textContent = `SAVED AT:[${new Date(Date.now() - 1000).toLocaleString(undefined, {timeZone: 'Asia/Kolkata'})}]:👉`;
+                         
+                    });  
                 }
+               
     }
 }
 

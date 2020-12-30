@@ -23,6 +23,7 @@ const notesSchema = new mongoose.Schema({
     toObject: { virtuals: true }
 }) 
 
+
 const Notes = mongoose.model('Notes',notesSchema );
 
 module.exports = Notes;

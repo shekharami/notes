@@ -15,7 +15,7 @@ const DB = 'mongodb+srv://amitshekhar:<DATABASE_PASSWORD>@cluster0.fxx85.mongodb
 mongoose.connect(DB, {
     useNewUrlParser: true,
     useCreateIndex: true,
-    useFindAndModify: true,
+    useFindAndModify: false,
     useUnifiedTopology: true
 }).then(con => {
     //console.log(con.connections);

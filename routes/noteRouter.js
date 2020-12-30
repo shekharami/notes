@@ -15,4 +15,8 @@ router
 .route('/delete/:id')
 .delete(noteController.deleteNote);
 
+router
+.route('/update')
+.patch(noteController.updateNote)
+
 module.exports = router;
