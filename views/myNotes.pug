@@ -1,28 +1,30 @@
-doctype html
-html(lang="en" dir="ltr")
-    head
-        meta(charset="utf-8")
-        meta(name="viewport" content="width=device-width, initial-scale=1.0")
-        link(rel="stylesheet" href="css/style.css")
-        link(rel="shortcut icon" type="image/png" href="/img/favicon.ico")
-        title
-            | #{title}
-    body.main
-        .main_div_view
-            form.form_get
-                table
-                    tr
-                        td
-                            p
-                                input#get_email(type="email" name="" value="" placeholder="Enter your email")
-                                |  and click on the below button to get your items
-                    tr
-                        td
-                            input.get_items.button(type="submit" name="" value="Get saved Notes")
-                        td
-                            a.button(href="/") Create a Note
+extends base
+block content
+    br
+    .back_to_main
+        a(href="/") Back to main
+    .returned_results
+        
+        if(data && data.length > 0)
+            h2#greeting.signout_msg= `Hi ${data[0].name.split(' ')[0]}, here are your saved notes: `
+            - let slno = 1
+            each note in data
 
-            .returned_results
-                h2#greeting
-                p.contents
-    script(src='/js/bundle.js')
+                .saved_note(class=`${note.id}` id=`div_${slno}`)
+                    span(id=`timestamp_${slno}`)= `SAVED AT: [${new Date(note.createdAt).toLocaleString(undefined, {timeZone: 'Asia/Kolkata'})}]:👉`
+                    br
+                    textarea(id=`textarea_${slno}` rows="8" cols='100')= `${note.item}`
+                    br
+                    input.button_note(id=`update_${slno}` type="button" value="update")
+                    | 
+                    input.button_note(id=`delete_${slno}` type="button" value="delete")
+                    hr
+                - slno += 1
+        else
+            if(user)
+                h2#greeting Uh oh! You do not have anything, please create some notes.
+                br
+                div_view_create_button
+                    input.button.create_button(type="button" value="Create a note")
+            else
+                h2#greeting.signout_msg Please login to view your notes

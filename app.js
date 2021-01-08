@@ -6,11 +6,15 @@ const xss = require('xss-clean');
 const hpp = require('hpp');
 const compression = require('compression');
 const cors = require('cors');
+const cookieParser= require('cookie-parser');
 
 const noteRouter = require('./routes/noteRouter');
 const viewRouter = require('./routes/viewRouter');
+const userRouter = require('./routes/userRouter');
 
 const app = express();
+
+app.enable('trust proxy');
 
 //implement CORS
 app.use(cors());
@@ -34,12 +38,15 @@ app.use(compression());
 
 app.use(express.static(`${__dirname}/public`));
 
+app.use(cookieParser());
+
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
 
 app.use(express.json({ limit : '10kb'  }));
 
 app.use('/api/notes', noteRouter);
+app.use('/api/notes/user', userRouter);
 app.use('/', viewRouter);
 
 module.exports = app;

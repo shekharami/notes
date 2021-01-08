@@ -1,17 +1,13 @@
 const Notes = require("../models/noteModel");
 
-exports.getNote = async (req, res, next) =>{
+exports.getNoteforTemplate = async (req, res, next) =>{
 
     try{
-        const data = await Notes.find({email: req.body.email}).sort({ createdAt:  -1 });
-
-        res.status(200).json({
-            status: "success",
-            data:{
-                length: data.length,
-                data
-            }
-        });
+        user = res.locals.user
+        if(user){
+            const data = await Notes.find({email: user.email}).sort({ createdAt:  -1 });
+            res.locals.data = data
+        }
 
     }catch(err){
         console.log(err);
@@ -19,6 +15,37 @@ exports.getNote = async (req, res, next) =>{
     
     next();
 };
+
+exports.getNote = async (req, res, next) =>{
+
+    try{
+        user = res.locals.user
+        if(user){
+            const data = await Notes.find({email: user.email}).sort({ createdAt:  -1 });
+            res.locals.data = data
+            return next();
+        }else{
+            const data = await Notes.find({email: req.body.email}).sort({ createdAt:  -1 });
+        
+            res.status(200).json({
+                status: "success",
+                data:{
+                    length: data.length,
+                    data
+                }
+            });
+
+        }
+
+        
+
+    }catch(err){
+        console.log(err);
+    }
+    
+    next();
+};
+
 
 exports.postNote = async (req, res, next) =>{
     try{

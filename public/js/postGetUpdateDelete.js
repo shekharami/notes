@@ -46,7 +46,7 @@ export const updateNoteAxios = async (data) => {
                 "Content-type": "application/json; charset=UTF-8"
             },
         });
-        //console.log(res)
+        
         if(res.data.status === 'success' ){
             return true
         }
@@ -66,7 +66,8 @@ export const deleteNote = async (id) => {
             },
         });
         if(res.status ===204){
-            alert("deleted note successfully.");
+            //alert("deleted note successfully.");
+            location.reload(true)
         }
 
     }catch(err){

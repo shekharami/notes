@@ -17,17 +17,19 @@
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
     "axios": "^0.21.0",
+    "bcryptjs": "^2.4.3",
     "compression": "^1.7.4",
+    "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-mongo-sanitize": "^2.0.1",
     "helmet": "^4.2.0",
     "hpp": "^0.2.3",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.11.8",
     "parcel-bundler": "^1.12.4",
     "pug": "^3.0.0",
     "xss-clean": "^0.1.1"
   }
-
 }

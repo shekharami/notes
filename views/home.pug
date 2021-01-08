@@ -1,32 +1,18 @@
-doctype html
-html(lang="en" dir="ltr")
-    head
-        meta(charset="utf-8")
-        meta(name="viewport" content="width=device-width, initial-scale=1.0")
-        link(rel="stylesheet" href="css/style.css")
-        link(rel="shortcut icon" type="image/png" href="/img/favicon.ico")
-        title
-            | #{title}
-    body.main
+extends base
+block content
+
+    br
+    if(user)
         .main_div
-            h2.header Create your note
+            h2.main_page_heading Create your note
             form.form_note
                 table
                     tr
-                        td Name
                         td
-                            input#name(type="text" name="" placeholder="Enter your Name" required)
-                    tr
-                        td Email
-                        td
-                            input#email(type="email" name="" placeholder="Enter your Email" required)
-                    tr
-                        td Item
-                        td
-                            textarea.text#todoitem(name="name" rows="8" cols="80" placeholder="Enter you items and click submit to save them")
+                            textarea.text.todoitem(name=`${user.name}` id=`${user.email}` rows="8" cols="80" placeholder="Enter you items and click submit to save them")
                             br
                             input.submit_text.button(type="submit" name="" value="submit")
-                br
+            br
             hr
             h3 OR
             table
@@ -34,4 +20,16 @@ html(lang="en" dir="ltr")
                     td
                         a(href="/myNotes")
                             input.get_items.button(type="button" name="" value="view your submitted items")
-    script(src='/js/bundle.js')
+
+    else
+        .main_div
+            h2.main_page_heading Create your note
+            form.form_note--before_login
+                table
+                    tr
+                        td
+                            textarea.text(name='' id='unique' rows="18" cols="90" placeholder="Enter you items and click submit to save them")
+                            br
+                            br
+                            br
+                            input.submit_text.button(type="submit" name="" value="submit")
