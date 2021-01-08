@@ -54,11 +54,6 @@ export const logout = async () => {
                 "Content-type": "application/json; charset=UTF-8"
             },
         });
-
-        // if(res.data.status === 'success'){
-
-        //     location.assign('/');     
-        // }
         
     }catch(err){
         alert(err.message)
