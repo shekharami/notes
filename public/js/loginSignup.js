@@ -55,11 +55,10 @@ export const logout = async () => {
             },
         });
 
-        if(res.data.status === 'success'){
-            alert("Logged out successfully.")
-            location.assign('/');
-              
-        }
+        // if(res.data.status === 'success'){
+
+        //     location.assign('/');     
+        // }
         
     }catch(err){
         alert(err.message)
