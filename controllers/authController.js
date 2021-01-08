@@ -3,7 +3,8 @@ const { promisify } = require('util');
 const User = require('../models/userModel');
 
 const createTokenSendCookie = function(id, req, res){
-    const token =  jwt.sign({ id }, process.env.JWT_SECRET)
+
+    const token =  jwt.sign({ id }, 'MY-SECOND-WEB-APP-NOTES-HOSTED-AT-CREATEWEBNOTE@HEROKU')
     res.cookie('jwt', token, { /*
         expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 *  1000),*/
         httpOnly: true,
