@@ -98,7 +98,7 @@ exports.logIn = async (req, res, next) => {
 exports.isLoggedIn = async (req, res, next) => {
     if(req.cookies.jwt){
         try{
-            const decoded = await promisify(jwt.verify)(req.cookies.jwt, process.env.JWT_SECRET);
+            const decoded = await promisify(jwt.verify)(req.cookies.jwt, 'MY-SECOND-WEB-APP-NOTES-HOSTED-AT-CREATEWEBNOTE@HEROKU');
 
             const freshUser = await User.findById(decoded.id);
 
