@@ -40,3 +40,20 @@ exports.getLogout = (req, res, next) => {
     });
     next();
 };
+
+exports.getProfile = (req, res, next) => {
+    
+    res.locals.flag = 1
+
+    if(!res.locals.user){
+        res.status(200).render('logout',{
+            title: 'Please login first!',  
+        })
+    }else{
+        res.status(200).render('profile', {
+            title: 'My Profile'
+        });
+    }
+
+    next();
+};

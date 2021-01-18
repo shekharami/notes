@@ -5,6 +5,8 @@ header
 
         if(user)
             input.logout_button.button(type="button" value="Log Out")
+            | 
+            input.profile.button(type="button" value=`Hello ${user.name}`)
         else
             input.login_btn_homepage.button(type="button" value="Login") 
             | 

@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
 const { promisify } = require('util');
 const User = require('../models/userModel');
+// const { use } = require('../routes/userRouter');
 
 const createTokenSendCookie = function(id, req, res){
 
@@ -40,6 +41,38 @@ exports.signUp = async (req, res, next) => {
             data
         })
         next();
+    }catch(err){
+        console.log(err)
+        
+        res.status(401).json({
+            status:"fail",
+            error: err.stack
+        })
+    }
+    
+};
+
+exports.updateUser = async (req, res, next) => {
+    try{
+
+        const data = {
+            name : req.body.name,
+            email : req.body.email
+        }
+
+        if(!data){
+            throw new Error('Something went wrong')
+        }
+
+        const user = await User.findByIdAndUpdate(req.body.id, data ,{new: true, runValidators: true})
+
+        res.status(201).json({
+            status: 'success',
+            user
+        })
+
+        next();
+
     }catch(err){
         console.log(err)
         

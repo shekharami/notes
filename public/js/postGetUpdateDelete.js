@@ -76,3 +76,31 @@ export const deleteNote = async (id) => {
 };
 
 
+export const updateUser = async (data) => {
+
+    const url = '/api/notes/user/updateUser';
+
+    try{
+        
+        const res = await axios({  
+            method: 'PATCH',
+            url,
+            data,
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            },
+        });
+        
+        const result = {
+            name: res.data.user.name,
+            email: res.data.user.email
+        }
+
+        return result
+        
+    }catch(err){
+        alert('Error: \n1. User with this email already exists.\n2. Something went wrong from server side\nError code : 401');
+    }
+};
+
+

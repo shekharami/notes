@@ -1,7 +1,7 @@
 import '@babel/polyfill';
 import { updateNote } from '../../controllers/noteController';
 import { update } from '../../models/noteModel';
-import { postOrGet, deleteNote, updateNoteAxios  } from './postGetUpdateDelete';
+import { postOrGet, deleteNote, updateNoteAxios, updateUser} from './postGetUpdateDelete';
 import { signUp, login, logout  } from './loginSignup';
 
 
@@ -17,6 +17,7 @@ const signup_homepage = document.querySelector('.signup_btn_homepage');
 const login_homepage = document.querySelector('.login_btn_homepage');
 const logout_button = document.querySelector('.logout_button');
 const create_button = document.querySelector('.create_button');
+const profile = document.querySelector('.profile');
 
 const note_before_login = document.querySelector('#unique')
 let item_before_login;
@@ -32,6 +33,12 @@ if(form_before_login){
         alert('Please login to save a note.')
         location.assign('/login')
         
+    })
+}
+
+if(profile){
+    profile.addEventListener('click', () =>{
+        location.assign('/my_profile')
     })
 }
 
@@ -159,6 +166,26 @@ if(logout_button && results){
             });
         }
     }
+}
+
+const profile_update = document.querySelector('.profile_update')
+if(profile_update){
+    profile_update.addEventListener('click', async () => {
+        //alert('clicked me')
+        let name = document.querySelector('.profile_name').value
+        let email = document.querySelector('.profile_email').value
+        let id = document.querySelector('.table').id
+
+        if(!name || !email){
+            alert('Please fill both the fields!')
+        }
+
+        const res = await updateUser({ id, name, email })
+
+        name = res.name
+        email = res.email
+
+    })
 }
 
 document.querySelector('.fa-github').addEventListener('click',()=>{

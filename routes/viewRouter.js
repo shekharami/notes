@@ -12,6 +12,8 @@ router.use(authController.isLoggedIn)
 
 router.get('/', viewController.getHome );
 
+router.get('/my_profile', viewController.getProfile );
+
 router.get('/signup', viewController.signup );
 
 router.get('/login', viewController.login );
