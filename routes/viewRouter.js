@@ -23,5 +23,4 @@ router.use(noteController.getNoteforTemplate);
 router.get('/myNotes',viewController.getNotes );
 
 
-
 module.exports = router;

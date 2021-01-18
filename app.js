@@ -49,4 +49,14 @@ app.use('/api/notes', noteRouter);
 app.use('/api/notes/user', userRouter);
 app.use('/', viewRouter);
 
+app.all('*', (req, res, next) => {
+    try{
+        res.status(404).end('Route is not defined. Error 404')
+    }catch(err){
+        console.log(err)
+    }
+    
+    next();
+});
+
 module.exports = app;
