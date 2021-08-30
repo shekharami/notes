@@ -4,4 +4,4 @@ developed using nodeJS, express, mongoDB, mongoose.
 
 Signup and start ceating your notes.
 
---Password reset functionality will be implemented soon
+--Password reset functionality will not be implemented.
